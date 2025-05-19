@@ -5,8 +5,8 @@ const Book = {
     const validColumns = ['id', 'title', 'author', 'isbn', 'publisher', 'genre', 'publication_date', 'price', 'page_count', 'language', 'availabile'];
     const validOrders = ['ASC', 'DESC'];
     // Validate sortBy and SortOrder 
-    if (!validColumns.includes(sortBy)) sortBy = 'id'; // Default to 'title'
-    if (!validOrders.includes(sortOrder.toUpperCase())) sortOrder = 'ASC'; // Default to 'ASC'
+    if (!validColumns.includes(sortBy)) sortBy = 'id'; // Default to 'id'
+    if (!validOrders.includes(sortOrder.toUpperCase())) sortOrder = 'DESC'; // Default to 'DESC'
 
     try {
       const result = await pool.query(`SELECT * FROM book ORDER BY ${sortBy} ${sortOrder.toUpperCase()}`);
@@ -116,7 +116,7 @@ const Book = {
       throw error;
     }
   },
-  getBooksByFilters: async (filters, sortBy = 'id', sortOrder = 'ASC', search) => {
+  getBooksByFilters: async (filters, sortBy = 'id', sortOrder = 'desc', search) => {
   const validColumns = ['id', 'title', 'author', 'isbn', 'publisher', 'genre', 'publication_date', 'price', 'page_count', 'language', 'available'];
   const validOrders = ['ASC', 'DESC'];
 

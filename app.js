@@ -17,8 +17,6 @@ app.use('/', indexRoutes);
 
 // booksRoutes
 app.use('/books', booksRoutes);
-app.use('/books/create', booksRoutes);
-app.use('/books/details/:id', booksRoutes);
 
 
 app.use((req, res) => {
